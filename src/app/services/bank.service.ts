@@ -8,12 +8,25 @@ const baseUrl="http://localhost:4000";
 })
 export class BankService {
 
-  constructor(private htttp: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   login(username:any,password:any){
-    return this.htttp.post("http://localhost:4000/users/login",{
+    return this.http.post(baseUrl+"/users/login",{
       username,
       password
+     },{withCredentials:true})
+   }
+   
+   deposit(username:any,amount:any){
+    return this.http.post(baseUrl+"/users/deposit",{
+      username,
+      amount
+     },{withCredentials:true})
+   }
+   withdraw(username:any,amount:any){
+    return this.http.post(baseUrl+"/users/withdraw",{
+      username,
+      amount
      },{withCredentials:true})
    }
   }

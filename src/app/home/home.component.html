@@ -1,1 +1,33 @@
-<p>home works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <form (ngSubmit)="deposit()">
+                <h3>Deposit</h3>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Username</label>
+                    <input (change)="onDepositUsernameChange($event)"  type="text" class="form-control" name="uname" id="uname" />
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Amount</label>
+                    <input (change)="onDepositAmountChange($event)" type="text" class="form-control" name="amount" id="amount" />
+                </div>
+                <button type="submit" class="btn btn-primary">Deposit</button>
+            </form>
+        </div>
+
+        <div class="col-6">
+            <form (ngSubmit)="withdraw()" >
+                <h3>Withdraw</h3>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Username</label>
+                    <input  (change)="onWithdrawUsernameChange($event)" type="text" class="form-control" name="uname1" id="uname1">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Amount</label>
+                    <input (change)="onWithdrawAmountChange($event)" type="text" class="form-control" name="amount1" id="amount1" />
+                </div>
+                <button type="submit" class="btn btn-primary">Withdraw</button>
+            </form>
+        </div>
+    </div>
+</div>
