@@ -29,5 +29,7 @@ export class BankService {
       amount
      },{withCredentials:true})
    }
+   history(){
+    return this.http.get(baseUrl+"/users/transcation-history",{withCredentials:true})
+ }
   }
-

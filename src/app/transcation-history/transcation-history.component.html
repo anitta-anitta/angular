@@ -1,0 +1,14 @@
+<div class="container">
+    <h1>Transcation History</h1>
+
+    <table class="table">
+        <tr>
+            <th>Type of Transcation</th>
+            <th>Amount</th>
+        </tr>
+        <tr *ngFor="let history of histories">
+            <td>{{history.typeOfTranscation}}</td>
+            <td>{{history.amount}}</td>
+        </tr>
+    </table>
+</div>

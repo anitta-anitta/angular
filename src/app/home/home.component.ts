@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
  dpAmount="";
  wdUsername="";
  wdAmount="";
+ balance="";
  constructor(private bankService: BankService) { }
 
   ngOnInit(): void {
@@ -21,6 +22,7 @@ export class HomeComponent implements OnInit {
       this.bankService.withdraw(this.wdUsername,this.wdAmount)
        .subscribe((data:any)=>{
          this.dpUsername="";
+         this.balance=data.balance;
         sweetalert.fire("withdraw sucess!",data.message);
        }, data=>{
         sweetalert.fire("withdraw failed","incorrect username or password","error");
@@ -31,6 +33,7 @@ export class HomeComponent implements OnInit {
     this.bankService.deposit(this.dpUsername,this.dpAmount)
     .subscribe((data:any)=>{
       this.dpUsername="";
+      this.balance=data.balance;
       sweetalert.fire("deposit sucess!",data.message);
      }, data=>{
       sweetalert.fire("deposit failed","incorrect username or password","error");

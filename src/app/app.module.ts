@@ -7,14 +7,16 @@ import { TestComponent } from './test/test.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
-import { HomeComponent } from './home/home.component'
+import { HomeComponent } from './home/home.component';
+import { TranscationHistoryComponent } from './transcation-history/transcation-history.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TestComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    TranscationHistoryComponent
   ],
   imports: [
     BrowserModule,
