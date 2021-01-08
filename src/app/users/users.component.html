@@ -1,0 +1,17 @@
+
+<div class="container">
+    <h1>Users</h1>
+
+    <table class="table">
+        <tr>
+            <th>Id</th>
+            <th>Username</th>
+            <th>Actions</th>
+        </tr>
+        <tr *ngFor="let history of users">
+            <td>{{user.username | custom | uppercase}}</td>
+            <td>{{user.username | custom: 'test' }}</td>
+            <td (click)="deleteUser(users.username)">Delete</td>
+        </tr>
+    </table>
+</div>

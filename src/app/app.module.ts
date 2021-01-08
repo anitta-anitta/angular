@@ -9,6 +9,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { TranscationHistoryComponent } from './transcation-history/transcation-history.component';
+import { UsersComponent } from './users/users.component';
+import { CustomPipe } from './pipes/custom.pipe';
+import { ParentComponent } from './parent/parent.component';
+import { ChildComponent } from './child/child.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,11 @@ import { TranscationHistoryComponent } from './transcation-history/transcation-h
     TestComponent,
     LoginComponent,
     HomeComponent,
-    TranscationHistoryComponent
+    TranscationHistoryComponent,
+    UsersComponent,
+    CustomPipe,
+    ParentComponent,
+    ChildComponent
   ],
   imports: [
     BrowserModule,

@@ -31,5 +31,12 @@ export class BankService {
    }
    history(){
     return this.http.get(baseUrl+"/users/transcation-history",{withCredentials:true})
- }
+   }
+   users(){
+    return this.http.get(baseUrl+"/users",{withCredentials:true})
+  }
+
+  deleteUser(id:any){
+    return this.http.delete(baseUrl+"/users/"+id,{withCredentials:true})
+  }
   }

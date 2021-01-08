@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BankService } from '../services/bank.service';
 import sweetalert from 'sweetalert2';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -8,21 +9,29 @@ import sweetalert from 'sweetalert2';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
- dpUsername="";
- dpAmount="";
- wdUsername="";
- wdAmount="";
+ 
  balance="";
- constructor(private bankService: BankService) { }
+
+ depositForm = this.fb.group({
+   dpUsername:["",[Validators.required]],
+   dpAmount:["",[Validators.required]],
+ });
+
+ withdrawForm = this.fb.group({
+   wdUsername:["",[Validators.required]],
+   wdAmount:["",[Validators.required]],
+ });
+
+ constructor(private bankService: BankService, private fb:FormBuilder) { }
 
   ngOnInit(): void {
   }
 
   withdraw(){
-      this.bankService.withdraw(this.wdUsername,this.wdAmount)
+      this.bankService.withdraw(this.withdrawForm.value.wdUsername,this.withdrawForm.value.wdAmount)
        .subscribe((data:any)=>{
-         this.dpUsername="";
          this.balance=data.balance;
+         this.withdrawForm.reset();
         sweetalert.fire("withdraw sucess!",data.message);
        }, data=>{
         sweetalert.fire("withdraw failed","incorrect username or password","error");
@@ -30,26 +39,17 @@ export class HomeComponent implements OnInit {
   }
 
   deposit(){
-    this.bankService.deposit(this.dpUsername,this.dpAmount)
+    if(this.depositForm.valid){
+    this.bankService.deposit(this.depositForm.value.dpUsername,this.depositForm.value.dpAmount)
     .subscribe((data:any)=>{
-      this.dpUsername="";
       this.balance=data.balance;
+      this.depositForm.reset();
       sweetalert.fire("deposit sucess!",data.message);
      }, data=>{
       sweetalert.fire("deposit failed","incorrect username or password","error");
      });
-    
-  }
-  onDepositUsernameChange(event:any){
-      this.dpUsername = event.target.value;
-  }
-  onDepositAmountChange(event:any){
-    this.dpAmount = event.target.value;
-  }
-  onWithdrawUsernameChange(event:any){
-    this.wdUsername = event.target.value;
-  }
-  onWithdrawAmountChange(event:any){
-    this.wdAmount = event.target.value;
+   }else{
+     alert("Invalid details")
+   }
   }
 }

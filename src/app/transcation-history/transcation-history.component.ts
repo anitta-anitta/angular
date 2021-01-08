@@ -11,7 +11,7 @@ export class TranscationHistoryComponent implements OnInit {
   constructor(private bankService: BankService) { }
 
   ngOnInit(): void {
-    this.bankService.history()
+    this.bankService.users()
       .subscribe((data: any) => {
         this.histories = data.history;
       })
